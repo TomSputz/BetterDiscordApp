@@ -433,4 +433,36 @@ const WebpackModulesProxy = new Proxy(WebpackModules, {
     }
 });
 
+/**
+ * Manually define names
+ */
+const MANUAL_DEFINES = {
+    ReactDOM: 'REACT_DOM',
+    DNDActions: 'DND_ACTIONS',
+    DNDSources: 'DND_SOURCES',
+    DNDObjects: 'DND_OBJECTS',
+    APIModule: 'API_MODULE',
+    DOMInfo: 'DOM_INFO',
+    URLParser: 'URL_PARSER',
+    ExtraURLs: 'EXTRA_URLS',
+    hljs: 'HLJS'
+};
+
+/**
+ * Ignore these modules if any
+ */
+const IGNORE_DEFINES = {};
+
+/**
+ * Define known modules as properties
+ */
+for (const km in KnownModules) {
+    if (IGNORE_DEFINES.hasOwnProperty(km)) continue;
+    const constantName = MANUAL_DEFINES.hasOwnProperty(km) ? MANUAL_DEFINES[km] : km.match(/[A-Z][a-z]+/g).join('_').toUpperCase();
+    Object.defineProperty(WebpackModulesProxy, constantName, {
+        get() { return this.getModuleByName(km) }
+    });
+}
+
+
 export { WebpackModulesProxy as WebpackModules };
