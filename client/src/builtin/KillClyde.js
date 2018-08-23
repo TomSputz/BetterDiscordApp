@@ -19,8 +19,7 @@ export default new class KillClyde extends BuiltinModule {
 
     async enabled(e) {
         if (Patcher.getPatchesByCaller('BD:KillClyde').length) return;
-        const MessageActions = WebpackModules.getModuleByName('MessageActions');
-        MonkeyPatch('BD:KillClyde', MessageActions).instead('sendBotMessage', void 0);
+        MonkeyPatch('BD:KillClyde', WebpackModules.MESSAGE_ACTIONS).instead('sendBotMessage', void 0);
     }
 
     disabled(e) {

@@ -22,8 +22,7 @@ export default new class VoiceDisconnect extends BuiltinModule {
     }
 
     listener() {
-        const VoiceChannelActions = WebpackModules.getModuleByName('VoiceChannelActions');
-        VoiceChannelActions.selectVoiceChannel(null, null);
+        WebpackModules.VOICE_CHANNEL_ACTIONS.selectVoiceChannel(null, null);
     }
 
     disabled(e) {

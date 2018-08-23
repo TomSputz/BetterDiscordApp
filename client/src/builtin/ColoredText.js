@@ -50,7 +50,7 @@ export default new class ColoredText extends BuiltinModule {
     }
 
     injectColoredText(thisObject, args, returnValue) {
-        const TinyColor = WebpackModules.getModuleByName('TinyColor');
+        const TinyColor = WebpackModules.TINY_COLOR;
         const markup = Utils.findInReactTree(returnValue, m => m && m.props && m.props.className && m.props.className.includes('da-markup'));
         const roleColor = thisObject.props.message.colorString;
         if (markup && roleColor) markup.props.style = {color: TinyColor.mix(roleColor, this.defaultColor, this.intensity)};

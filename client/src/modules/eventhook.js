@@ -37,8 +37,7 @@ export default class extends EventListener {
     }
 
     hook() {
-        const Events = WebpackModules.getModuleByName('Events');
-        MonkeyPatch('BD:EVENTS', Events.prototype).after('emit', (obj, args, retVal) => {
+        MonkeyPatch('BD:EVENTS', WebpackModules.EVENTS.prototype).after('emit', (obj, args, retVal) => {
             const eventId = args.length >= 3 ? args[2].id || -1 : -1;
             if (eventId === this.ignoreMultiple) return;
             this.ignoreMultiple = eventId;

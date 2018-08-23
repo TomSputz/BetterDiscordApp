@@ -37,15 +37,14 @@ export default class {
      * @return {React.Element}
      */
     static createReactElement(component, props, mountAtTop) {
-        const React = WebpackModules.getModuleByName('React');
-        return React.createElement(this.ReactCompatibility, {component, mountAtTop, props});
+        return WebpackModules.REACT.createElement(this.ReactCompatibility, {component, mountAtTop, props});
     }
 
     static get ReactCompatibility() {
         if (this._ReactCompatibility) return this._ReactCompatibility;
 
-        const React = WebpackModules.getModuleByName('React');
-        const ReactDOM = WebpackModules.getModuleByName('ReactDOM');
+        const React = WebpackModules.REACT;
+        const ReactDOM = WebpackModules.REACT_DOM;
 
         return this._ReactCompatibility = class VueComponent extends React.Component {
             render() {

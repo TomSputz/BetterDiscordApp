@@ -162,7 +162,7 @@ export default new class E2EE extends BuiltinModule {
             if (!ECDH_STORAGE.hasOwnProperty(channelId)) {
                 const publicKeyMessage = `\`\`\`\n-----BEGIN PUBLIC KEY-----\n${this.createKeyExchange(channelId)}\n-----END PUBLIC KEY-----\n\`\`\``;
                 if (this.encryptNewMessages) this.encryptNewMessages = false;
-                WebpackModules.getModuleByName('DraftActions').saveDraft(channelId, publicKeyMessage);
+                WebpackModules.DRAFT_ACTIONS.saveDraft(channelId, publicKeyMessage);
             }
             const secret = this.computeSecret(channelId, key);
             this.setKey(channelId, secret);
@@ -176,7 +176,7 @@ export default new class E2EE extends BuiltinModule {
     }
 
     patchDispatcher() {
-        const Dispatcher = WebpackModules.getModuleByName('Dispatcher');
+        const Dispatcher = WebpackModules.DISPATCHER;
         MonkeyPatch('BD:E2EE', Dispatcher).before('dispatch', (_, [event]) => {
             if (event.type !== 'MESSAGE_CREATE') return;
 
@@ -190,9 +190,9 @@ export default new class E2EE extends BuiltinModule {
                 decrypt = this.decrypt(this.decrypt(this.decrypt(seed, this.master), key), event.message.content);
             } catch (err) { return } // Ignore errors such as non empty
 
-            const MessageParser = WebpackModules.getModuleByName('MessageParser');
-            const Permissions = WebpackModules.getModuleByName('GuildPermissions');
-            const DiscordConstants = WebpackModules.getModuleByName('DiscordConstants');
+            const MessageParser = WebpackModules.MESSAGE_PARSER;
+            const Permissions = WebpackModules.GUILD_PERMISSIONS;
+            const DiscordConstants = WebpackModules.DISCORD_CONSTANTS;
             const currentChannel = DiscordApi.Channel.fromId(event.message.channel_id).discordObject;
 
             // Create a generic message object to parse mentions with
@@ -223,9 +223,9 @@ export default new class E2EE extends BuiltinModule {
         if (!key) return; // We don't have a key for this channel
 
         const Message = WebpackModules.getModuleByPrototypes(['isMentioned']);
-        const MessageParser = WebpackModules.getModuleByName('MessageParser');
-        const Permissions = WebpackModules.getModuleByName('GuildPermissions');
-        const DiscordConstants = WebpackModules.getModuleByName('DiscordConstants');
+        const MessageParser = WebpackModules.MESSAGE_PARSER;
+        const Permissions = WebpackModules.GUILD_PERMISSIONS;
+        const DiscordConstants = WebpackModules.DISCORD_CONSTANTS;
         const currentChannel = DiscordApi.Channel.fromId(component.props.message.channel_id).discordObject;
 
         if (typeof component.props.message.content !== 'string') return; // Ignore any non string content

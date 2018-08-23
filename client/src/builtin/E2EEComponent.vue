@@ -95,7 +95,7 @@
                 E2EE.preExchangeState = E2EE.encryptNewMessages;
                 E2EE.encryptNewMessages = false; // Disable encrypting new messages so we won't encrypt public keys
                 const publicKeyMessage = `\`\`\`\n-----BEGIN PUBLIC KEY-----\n${keyExchange}\n-----END PUBLIC KEY-----\n\`\`\``;
-                WebpackModules.getModuleByName('DraftActions').saveDraft(DiscordApi.currentChannel.id, publicKeyMessage);
+                WebpackModules.DRAFT_ACTIONS.saveDraft(DiscordApi.currentChannel.id, publicKeyMessage);
                 Toasts.info('Key exchange started. Expires in 30 seconds');
             }
         },

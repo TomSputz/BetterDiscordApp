@@ -153,11 +153,11 @@ class Helpers {
     }
 
     static get React() {
-        return WebpackModules.getModuleByName('React');
+        return WebpackModules.REACT;
     }
 
     static get ReactDOM() {
-        return WebpackModules.getModuleByName('ReactDOM');
+        return WebpackModules.REACT_DOM;
     }
 }
 

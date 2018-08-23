@@ -21,7 +21,7 @@ export default new class TwentyFourHour extends BuiltinModule {
 
     async enabled(e) {
         if (Patcher.getPatchesByCaller('BD:TwentyFourHour').length) return;
-        const TimeFormatter = WebpackModules.getModuleByName('TimeFormatter');
+        const TimeFormatter = WebpackModules.TIME_FORMATTER;
         MonkeyPatch('BD:TwentyFourHour', TimeFormatter).after('calendarFormat', (thisObject, args, returnValue) => {
             const matched = returnValue.match(twelveHour);
             if (!matched || matched.length != 4) return;

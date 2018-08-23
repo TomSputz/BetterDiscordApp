@@ -150,8 +150,8 @@ export default new class EmoteModule extends BuiltinModule {
      * Patches MessageActions send and edit
      */
     patchSendAndEdit() {
-        MonkeyPatch('BD:EMOTEMODULE', WebpackModules.getModuleByName('MessageActions')).instead('sendMessage', this.handleSendMessage.bind(this));
-        MonkeyPatch('BD:EMOTEMODULE', WebpackModules.getModuleByName('MessageActions')).instead('editMessage', this.handleEditMessage.bind(this));
+        MonkeyPatch('BD:EMOTEMODULE', WebpackModules.MESSAGE_ACTIONS).instead('sendMessage', this.handleSendMessage.bind(this));
+        MonkeyPatch('BD:EMOTEMODULE', WebpackModules.MESSAGE_ACTIONS).instead('editMessage', this.handleEditMessage.bind(this));
     }
 
     /**

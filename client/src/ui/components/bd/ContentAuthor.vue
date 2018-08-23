@@ -44,7 +44,7 @@
                 e.preventDefault();
             },
             openUserProfileModal(discord_id) {
-                WebpackModules.getModuleByName('UserProfileModal').open(discord_id);
+                WebpackModules.USER_PROFILE_MODAL.open(discord_id);
                 BdMenu.close();
             },
             openGitHub() {

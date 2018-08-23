@@ -18,13 +18,13 @@ export default new class BlockedMessages extends BuiltinModule {
     }
 
     static isBlocked(id) {
-        const RelationshipStore = WebpackModules.getModuleByName('RelationshipStore');
+        const RelationshipStore = WebpackModules.RELATIONSHIP_STORE;
         return RelationshipStore.isBlocked(id);
     }
 
     async enabled(e) {
         if (Patcher.getPatchesByCaller('BD:BlockedMessages').length) return;
-        const MessageActions = WebpackModules.getModuleByName('MessageActions');
+        const MessageActions = WebpackModules.MESSAGE_ACTIONS;
         MonkeyPatch('BD:BlockedMessages', MessageActions).instead('receiveMessage', this.processMessage);
 
         const MessageListComponents = WebpackModules.getModuleByProps(['BlockedMessageGroup']);
