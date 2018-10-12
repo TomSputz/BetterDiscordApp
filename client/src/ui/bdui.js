@@ -10,7 +10,7 @@
 
 import { Events, DiscordApi, Settings } from 'modules';
 import { remote } from 'electron';
-import DOM from './dom';
+import DOM, { DOMObserver } from './dom';
 import Vue from './vue';
 import { BdSettingsWrapper, BdModals, BdToasts, BdNotifications, BdContextMenu } from './components';
 
@@ -82,6 +82,11 @@ export default class {
             el: '#bd-contextmenu'
         });
 
+        this.guildsSubscription = DOM.observer.subscribeToQuerySelector((mutation) => {
+            mutation.target.prepend(this.vueInstance.$el)
+            DOM.observer.unsubscribe(this.guildsSubscription)
+        }, '.da-guildsWrapper')
+        
         return this.vueInstance;
     }
 

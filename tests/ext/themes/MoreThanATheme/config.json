@@ -1,0 +1,115 @@
+{
+    "info": {
+        "name": "MoreThanATheme",
+        "authors": [ "MoreThanTom" ],
+        "version": "0.1",
+        "description": "Unopinionated Template Theme",
+        "icon": "icon.svg",
+        "icon_type": "image/svg+xml",
+        "type": "sass"
+    },
+    "main": "index.scss",
+    "defaultConfig": [
+        {
+            "category": "MoreThanATheme",
+            "settings": [
+                {
+                    "id": "base03",
+                    "type": "colour",
+                    "value": "#002b36",
+                    "text": "Dark Base 3"
+                },
+                {
+                    "id": "base02",
+                    "type": "colour",
+                    "value": "#073642",
+                    "text": "Dark Base 2"
+                },
+                {
+                    "id": "base01",
+                    "type": "colour",
+                    "value": "#586e75",
+                    "text": "Dark Base 1"
+                },
+                {
+                    "id": "base00",
+                    "type": "colour",
+                    "value": "#657b83",
+                    "text": "Dark Base 0"
+                },
+                {
+                    "id": "base0",
+                    "type": "colour",
+                    "value": "#839496",
+                    "text": "Light Base 0"
+                },
+                {
+                    "id": "base1",
+                    "type": "colour",
+                    "value": "#93a1a1",
+                    "text": "Light Base 1"
+                },
+                {
+                    "id": "base2",
+                    "type": "colour",
+                    "value": "#eee8d5",
+                    "text": "Light Base 2"
+                },
+                {
+                    "id": "base3",
+                    "type": "colour",
+                    "value": "#fdf6e3",
+                    "text": "Light Base 3"
+                },
+                {
+                    "id": "yellow",
+                    "type": "colour",
+                    "value": "#b58900",
+                    "text": "Yellow"
+                },
+                {
+                    "id": "orange",
+                    "type": "colour",
+                    "value": "#cb4b16",
+                    "text": "Orange"
+                },
+                {
+                    "id": "red",
+                    "type": "colour",
+                    "value": "#dc322f",
+                    "text": "Red"
+                },
+                {
+                    "id": "magenta",
+                    "type": "colour",
+                    "value": "#d33682",
+                    "text": "Magenta"
+                },
+                {
+                    "id": "violet",
+                    "type": "colour",
+                    "value": "#6c71c4",
+                    "text": "Violet"
+                },
+                {
+                    "id": "blue",
+                    "type": "colour",
+                    "value": "#268bd2",
+                    "text": "BLue"
+                },
+                {
+                    "id": "cyan",
+                    "type": "colour",
+                    "value": "#2aa198",
+                    "text": "Cyan"
+                },
+                {
+                    "id": "green",
+                    "type": "colour",
+                    "value": "#859900",
+                    "text": "Green"
+                }
+            ]
+        }
+    ]
+}

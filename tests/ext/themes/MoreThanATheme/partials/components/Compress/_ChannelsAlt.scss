@@ -1,0 +1,47 @@
+channelsWrapperTimings {
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+}
+
+.da-channels {
+
+    &,
+    .da-unread,
+    .da-unreadBar,
+    svg {
+        @extend channelsWrapperTimings;
+    }
+
+    .da-unread {
+        transition-property: padding;
+    }
+
+    .da-unreadBar {
+        transition-property: border-radius, font-size;
+    }
+
+    svg {
+        transition-property: margin-left;
+    }
+
+    .da-guildsWrapper:not(:hover)~.da-flex &:not(:hover) {
+        width: 10px;
+
+        .da-unread {
+            padding: 0;
+        }
+
+        .da-unreadBar {
+            border-radius: 0;
+            font-size: 0;
+        }
+
+        svg {
+            margin-left: 0;
+        }
+
+        .da-scroller::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

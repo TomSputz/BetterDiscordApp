@@ -1,0 +1,118 @@
+channelsWrapperTimings {
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+}
+
+.da-channels {
+    width: 10px;
+    z-index: 101;
+
+    
+    .da-unread,
+    .da-unreadBar,
+    svg {
+        @extend channelsWrapperTimings;
+    }
+
+    .da-unread {
+        transition-property: padding;
+    }
+
+    .da-unreadBar {
+        transition-property: border-radius, font-size;
+    }
+
+    svg {
+        transition-property: margin-left;
+    }
+
+    .da-guildsWrapper:not(:hover)~.da-flex &>:first-child:not(:hover) {
+
+        .da-unread {
+            padding: 0;
+        }
+
+        .da-unreadBar {
+            border-radius: 0;
+            font-size: 0;
+        }
+
+        svg {
+            margin-left: 0;
+        }
+
+        .da-scroller::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &>:first-child {
+        z-index: 1;
+        @extend channelsWrapperTimings;
+        transition-property: width;
+        width: 10px;
+    }
+
+    .da-accountBox,
+    .da-voiceConnected {
+        z-index: 1;
+        overflow: hidden;
+        @extend channelsWrapperTimings;
+        transition-property: width, padding-right;
+        width: 0;
+        padding-right: 0;
+    }
+
+    .da-guildsWrapper:hover~.da-flex & {
+
+        &>.da-flex,
+        &>.da-privateChannels {
+            width: 240px;
+        }
+
+        .da-accountBox,
+        .da-voiceConnected {
+            width: 220px;
+            padding-right: 10px;
+        }
+    }
+
+    &>.da-flex:hover,
+    &>.da-privateChannels:hover {
+        width: 240px;        
+        &~.da-accountBox,
+        &~.da-voiceConnected {
+            width: 220px;
+            padding-right: 10px;
+        }
+    }
+    
+    .da-voiceConnected:hover {
+        width: 220px;
+        padding-right: 10px;
+        &~.da-accountBox {
+            width: 220px;
+            padding-right: 10px;
+        }
+    }
+    .da-accountBox:hover {
+        width: 220px;
+        padding-right: 10px;
+    }
+    &+.da-chat .da-channelTextArea {
+        @extend channelsWrapperTimings;
+        transition-property: width, margin-left;
+    }
+
+    &:hover,
+    .da-guildsWrapper:hover~.da-flex & {
+        &+.da-chat .da-channelTextArea {
+            width: calc(100% - 230px);
+            margin-left: 230px;
+        }
+    }
+}
+// Replacing colors
+.da-privateChannels {
+    background-color: #2f3136;
+}

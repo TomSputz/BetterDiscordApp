@@ -1,0 +1,298 @@
+
+// Random fixes to the UI
+.da-channels {
+    overflow: hidden;
+}
+
+.da-accountBox {
+    margin-bottom: 0;
+}
+
+.da-voiceConnected {
+    border-bottom: 0;
+}
+
+.da-chat .da-divider,
+.da-chat .da-divider:before {
+    background: transparent
+}
+
+.da-chat .da-dividerRed+.da-divider {
+    padding-top: 40px;
+}
+
+.app .da-channels .da-nameSelectedText,
+.app .da-privateChannels .channel-name {
+    opacity: 1;
+}
+
+.da-accountBox .da-flex path,
+[name*="TitleBarClose"] polygon,
+[name*="TitleBarMinimize"] rect {
+    fill: $base1;
+}
+
+[name*="TitleBarMaximize"] rect {
+    stroke: $base1;
+}
+
+// WIP replacement for javascript animation of icon
+@keyframes undarkenIcon {
+    0% {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes darkenIcon {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.da-guild:first-child .da-guildInner {
+    animation: undarkenIcon 2000ms;
+    background: rgba(0, 0, 0, 0) !important;
+
+    &:hover {
+        animation: darkenIcon 200ms;
+        background: rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+// !WIP
+// Darken instead of set colors
+
+// Theme
+@mixin rebase($rebase03, $rebase02, $rebase01, $rebase00, $rebase0, $rebase1, $rebase2, $rebase3) {
+
+    // Links or smthn
+    .da-anchor {
+        color: $blue;
+    }
+
+    // TODO: Replace Discord Blue
+    //.da-item.da-selected,
+    //.da-barFill {
+    //    background: $blue;
+    //}
+    .da-guildsWrapper {
+        background: $base03;
+
+        .da-guild:before {
+            background: $base01;
+        }
+    }
+
+    .da-channels>.da-flex,
+    .da-channels>.da-privateChannels,
+    .da-members,
+    .da-chat form .da-inner,
+    .da-accountBox,
+    .da-voiceConnected,
+    .da-titleWrapper>.da-flex,
+    .ui-standard-sidebar-view .content-region,
+    .da-channelNotices .da-channelNotice,
+    .da-chat .da-typing {
+        background: $rebase03;
+    }
+
+    .da-channelNotices .da-channelNotice.da-invite {
+        background: $rebase03 url(/assets/bf625d222187f542b9d7179109422e2c.svg) no-repeat center 20px
+    }
+
+    // Scrollbars seem to need !important
+    .da-messages::-webkit-scrollbar-track-piece {
+        background: $rebase03 !important;
+        border-color: $rebase03 !important;
+        border-radius: 0 !important;
+    }
+
+    .da-messages::-webkit-scrollbar-thumb {
+        background: $rebase02 !important;
+        border-color: $rebase02 !important;
+        border-radius: 0 !important;
+    }
+
+    .da-status {
+        border: 2px solid $rebase03;
+    }
+
+    .da-chat .da-messagesWrapper,
+    .ui-standard-sidebar-view .sidebar-region {
+        background: $rebase02;
+    }
+
+    // TODO: Finish borders - theyre bad rn
+    .da-titleWrapper>.da-flex>.da-flex:after,
+    .da-titleWrapper>.da-flex .da-divider {
+        background: transparent;
+        border-right: 1px solid hsla(0, 0%, 100%, .2);
+    }
+
+    .da-guildSeparator:after,
+    .da-channels .da-wrapper .da-unread {
+        background: $rebase01;
+    }
+
+    // Comments or smthn
+    annotations {
+        color: $rebase01;
+    }
+
+    generalText {
+        color: $rebase1;
+    }
+
+    .da-accountBox .da-flex>div {
+        button {
+            background: none !important;
+        }
+
+        button:after {
+            width: 24px;
+            height: 20px;
+        }
+
+        &:nth-child(1) button:after {
+            content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><rect width="24" height="24"/><path fill="#{$rebase1}" d="M7,4.4408921e-16 C8.65685425,0 10,1.34314575 10,3 L10,9 C10,10.6568542 8.65685425,12 7,12 C5.34314575,12 4,10.6568542 4,9 L4,3 C4,1.34314575 5.34314575,4.4408921e-16 7,0 L7,4.4408921e-16 Z M14,9 C14,12.53 11.39,15.44 8,15.93 L8,19 L6,19 L6,15.93 C2.61,15.44 0,12.53 0,9 L2,9 C2,11.7614237 4.23857625,14 7,14 C9.76142375,14 12,11.7614237 12,9 L14,9 L14,9 Z" transform="translate(5 3)"/></g></svg>');
+
+        }
+
+        &:nth-child(2) button:after {
+            content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><rect width="24" height="24"/><path fill="#{$rebase1}" d="M3,11 C3,6 7,2 12,2 L12,4 C8.13400675,4 5,7.13400675 5,11 L5,13 L9,13 L9,21 L6,21 C4.34314575,21 3,19.6568542 3,18 L3,11 Z M21,11 L21,18 C21,19.6568542 19.6568542,21 18,21 L15,21 L15,13 L19,13 L19,11 C19,7.13400675 15.8659932,4 12,4 L12,2 C17,2 21,6 21,11 Z"/></g></svg>');
+        }
+    }
+
+    .da-voiceConnected {
+        .da-button {
+            background: none !important;
+        }
+
+        .da-button:after {
+            width: 20px;
+            height: 20px;
+        }
+
+        .da-buttonInfo:after {
+            content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><rect width="24" height="24"/><path fill="#{$rebase1}" d="M9,7 L11,7 L11,5 L9,5 L9,7 Z M10,18 C5.59,18 2,14.41 2,10 C2,5.59 5.59,2 10,2 C14.41,2 18,5.59 18,10 C18,14.41 14.41,18 10,18 L10,18 Z M10,4.4408921e-16 C4.4771525,-1.77635684e-15 4.4408921e-16,4.4771525 0,10 C-1.33226763e-15,12.6521649 1.0535684,15.195704 2.92893219,17.0710678 C4.80429597,18.9464316 7.3478351,20 10,20 C12.6521649,20 15.195704,18.9464316 17.0710678,17.0710678 C18.9464316,15.195704 20,12.6521649 20,10 C20,7.3478351 18.9464316,4.80429597 17.0710678,2.92893219 C15.195704,1.0535684 12.6521649,2.22044605e-16 10,0 L10,4.4408921e-16 Z M9,15 L11,15 L11,9 L9,9 L9,15 L9,15 Z" transform="translate(2 2)"/></g></svg>');
+width: 20px;
+            height: 20px;
+        }
+
+        .da-buttonDisconnect:after {
+            content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><rect width="24" height="24"/><path fill="#{$rebase1}" d="M1,0 C0.44771525,0 0,0.44771525 0,1 C-4.4408921e-16,10.3888407 7.61115925,18 17,18 C17.2652165,18 17.5195704,17.8946432 17.7071068,17.7071068 C17.8946432,17.5195704 18,17.2652165 18,17 L18,13.5 C18,12.9477153 17.5522847,12.5 17,12.5 C15.76,12.5 14.55,12.3 13.43,11.93 C13.08,11.82 12.69,11.9 12.41,12.18 L10.21,14.38 C7.38,12.94 5.07,10.62 3.62,7.79 L5.82,5.58 C6.1,5.31 6.18,4.92 6.07,4.57 C5.7,3.45 5.5,2.24 5.5,1 C5.5,0.44771525 5.05228475,0 4.5,0 M16.1213203,0.464466094 L14,2.58578644 L11.8786797,0.464466094 L10.4644661,1.87867966 L12.5857864,4 L10.4644661,6.12132034 L11.8786797,7.53553391 L14,5.41421356 L16.1213203,7.53553391 L17.5355339,6.12132034 L15.4142136,4 L17.5355339,1.87867966" transform="matrix(1 0 0 -1 3 21)"/></g></svg>');
+
+        }
+    }
+
+    .da-accountBox .da-flex path,
+    .da-channels .da-scroller path:first-child,
+    .da-iconForeground {
+        fill: $rebase1;
+    }
+
+    .da-item.da-selected,
+    .da-chat .da-divider span {
+        color: $rebase02
+    }
+
+    // Important Titles
+    headings {
+        color: $rebase3;
+    }
+
+    .da-chat .da-divider {
+
+        span,
+        div {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        &.da-dividerRed {
+
+            span,
+            div {
+                background: $red;
+            }
+        }
+    }
+
+    @if $borders !=0 {
+        .da-messages::-webkit-scrollbar-thumb {
+            border-top: $rebase01 solid 1px !important;
+            border-bottom: $rebase01 solid 1px !important;
+        }
+
+        .da-accountBox,
+        .da-voiceConnected,
+        .da-channelTextArea {
+            border-top: $rebase0 solid 1px;
+        }
+
+        .da-titleWrapper,
+        .da-channels>.da-flex>.da-flexChild,
+        .bd-settingsButton {
+            border-bottom: $rebase0 solid 1px;
+        }
+
+        .da-membersWrap {
+            border-left: $rebase0 solid 1px;
+        }
+
+        .da-guildsWrapper,
+        .da-channels {
+            border-right: $rebase1 solid 1px;
+        }
+    }
+
+    @else {
+        .da-channelTextArea {
+            border: none;
+        }
+    }
+}
+
+.theme-light { @include rebase($base3, $base2, $base1, $base0, $base00, $base01, $base02, $base03) }
+
+.theme-dark { @include rebase($base03, $base02, $base01, $base00, $base0, $base1, $base2, $base3) }
+
+// Groupings
+.da-markup,
+.da-member,
+.da-typing .da-text,
+.da-item,
+.da-description,
+.da-h5,
+.da-h2,
+.da-channels .da-nameSelectedText,
+.da-privateChannels .channel-name,
+.da-name {
+    @extend content;
+}
+.private-channels .channel .channel-activity,
+.da-activity {
+    @extend annotations;
+}
+.da-channelName,
+.ui-standard-sidebar-view .da-titleDefault,
+.da-channels .da-header,
+.da-accountBox{
+    @extend headings;
+}
+
+// Aliases
+.container-1UB9sr {
+    @extend .da-voiceConnected;
+}
+
+.container-2Thooq {
+    @extend .da-accountBox;
+}

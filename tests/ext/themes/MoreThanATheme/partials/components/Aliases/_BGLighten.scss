@@ -1,0 +1,9 @@
+.da-contentSelectedText,
+.da-member.popout-open>.da-content {
+    @extend BGSelectLighten !optional;
+}
+.da-contentHoveredText
+.da-member:hover>.da-content,
+.da-channel:hover a {
+    @extend BGHoverLighten !optional;
+}

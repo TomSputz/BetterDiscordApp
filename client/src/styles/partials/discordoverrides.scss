@@ -1,8 +1,5 @@
 // sass-lint:disable-all
 body:not(.bd-hideButton) {
-    [class*='guildsWrapper-'] {
-        padding-top: 49px !important;
-    }
     .platform-osx [class*='guildsWrapper-'] {
         margin-top: 26px;
     }

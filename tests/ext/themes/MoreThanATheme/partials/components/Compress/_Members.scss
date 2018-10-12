@@ -1,0 +1,24 @@
+membersWrapTimings {
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+}
+
+.da-membersWrap {
+    min-width: 0;
+    width: 240px;
+    transition-property: width;
+    @extend membersWrapTimings;
+
+    .da-memberInner {
+        transition-property: opacity;
+        @extend membersWrapTimings;
+    }
+
+    &:not(:hover) {
+        width: 60px;
+
+        .da-memberInner {
+            opacity: 0;
+        }
+    }
+}

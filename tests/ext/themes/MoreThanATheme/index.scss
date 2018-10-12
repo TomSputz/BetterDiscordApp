@@ -1,0 +1,12 @@
+// Main modules - should leave discord looking completely identical to default, but make it easier to build on
+@import './partials/components/Aliases';
+@import './partials/components/Cleanup';
+
+// Custom modules
+@import './partials/components/Compress';
+
+// temporary stuff i lazily put here
+.bd-settings {
+    position:fixed;
+    top:0;
+}

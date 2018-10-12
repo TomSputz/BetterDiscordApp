@@ -1,0 +1,231 @@
+// Collapsing chatbox
+.da-channelTextArea {
+    padding: 0;
+    margin: 0;
+}
+
+.da-chat form {
+    margin: 0;
+
+    .da-channelTextArea {
+        padding: 0;
+        margin: 0;
+
+        .da-inner {
+            border-radius: 0;
+            align-items: center;
+            min-height: 52px;
+
+            .da-textArea {
+                min-height: 1.25rem;
+                padding: 0 38px 0 10px;
+            }
+
+            .da-emojiButton {
+                position: relative;
+                top: 0;
+                margin-left: -22px;
+            }
+        }
+    }
+
+    .da-typing {
+        bottom: 100%;
+        width: auto;
+        left: auto;
+        padding: 0 5px;
+        right: 0px;
+        transition: opacity 200ms;
+        border-radius: 5px 0 0 0;
+        z-index: 1;
+        background: #484B51;
+
+        &:hover {
+            opacity: 0;
+        }
+    }
+}
+
+// Collapsing Account Box
+.da-accountBox {
+    opacity: 1;
+}
+
+// Collapsing titlebar
+.da-titleBar {
+    position: absolute;
+    height: 48px;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    -webkit-app-region: no-drag;
+
+    .da-wordmark {
+        width: 100%;
+        height: 10px;
+        -webkit-app-region: drag;
+
+        svg {
+            display: none;
+        }
+    }
+
+    .da-winButton {
+        width: 24px;
+        height: 24px;
+        margin: 0 4px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    .da-winButtonClose {
+        padding-right: 4px;
+
+        &:hover {
+            polygon {
+                fill: #f04747;
+            }
+        }
+    }
+}
+
+.da-titleWrapper>.da-flex>.da-flex {
+    padding-right: 96px;
+
+    &:after {
+        content: '';
+        width: 1px;
+        height: 22px;
+        background: hsla(0, 0%, 84.7%, .1);
+        margin: 0 4px;
+    }
+}
+
+// Animated collapsing memberlist
+.da-membersWrap {
+    min-width: 0;
+    width: 60px;
+    transition: width 200ms linear;
+
+    .da-memberInner {
+        opacity: 0;
+        transition: opacity 200ms linear;
+    }
+
+    &:hover {
+        width: 240px;
+
+        .da-memberInner {
+            opacity: 1;
+        }
+    }
+}
+
+// Animated Collapsing Guild list
+guildsWrapperTimings {
+    transition-duration: 100ms;
+    transition-timing-function: linear;
+}
+
+.da-guildsWrapper {
+    transition-property: width;
+    @extend guildsWrapperTimings;
+
+    .da-unreadMentionsBar {
+        transition-property: font-size, border-radius;
+        @extend guildsWrapperTimings;
+
+        svg {
+            transition-property: margin-left;
+            ;
+            @extend guildsWrapperTimings;
+        }
+    }
+
+    .da-unreadMentionsIndicatorBottom,
+    .da-unreadMentionsIndicatorTop {
+        transition-property: padding;
+        @extend guildsWrapperTimings;
+    }
+
+    &:not(:hover) {
+        width: 10px;
+
+        .da-unreadMentionsBar {
+            font-size: 0;
+            border-radius: 0;
+
+            svg {
+                margin-left: 0;
+            }
+        }
+
+        .da-unreadMentionsIndicatorBottom,
+        .da-unreadMentionsIndicatorTop {
+            padding: 0;
+        }
+    }
+}
+
+// Animated Collapsing Channel list
+channelsWrapperTimings {
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+}
+
+.da-channels {
+
+    &,
+    .da-unread,
+    .da-unreadBar,
+    svg {
+        @extend channelsWrapperTimings;
+    }
+
+    .da-unread {
+        transition-property: padding;
+    }
+
+    .da-unreadBar {
+        transition-property: border-radius, font-size;
+    }
+
+    svg {
+        transition-property: margin-left;
+    }
+
+    .da-guildsWrapper:not(:hover)~.da-flex &:not(:hover) {
+        width: 10px;
+
+        .da-unread {
+            padding: 0;
+        }
+
+        .da-unreadBar {
+            border-radius: 0;
+            font-size: 0;
+        }
+
+        svg {
+            margin-left: 0;
+        }
+
+        .da-scroller::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+// Aliases
+.container-2Thooq {
+    @extend .da-accountBox;
+}

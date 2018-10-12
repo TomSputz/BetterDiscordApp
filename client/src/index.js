@@ -121,7 +121,7 @@ class BetterDiscord {
                 }
             ]);
         }
-        showDummyNotif();
+        //showDummyNotif();
 
         DiscordContextMenu.add([
             {

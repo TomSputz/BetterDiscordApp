@@ -1,0 +1,8 @@
+// I am assigning these systematically - starting with rgba(255,255,255,0), I find the alpha value where the highest value matches the 'original discord' one, then lower the other two to match.
+
+BGHoverLighten {
+    background: rgba(190,200,255,0.05);
+}
+BGSelectLighten {
+    background: rgba(210,235,255,0.115);
+}

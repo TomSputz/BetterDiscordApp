@@ -1,0 +1,19 @@
+.da-newMessagesBar,
+.da-jumpToPresentBar {
+    left: 0;
+    right: 0;
+    border-radius: 0;
+
+    button:first-child {
+        max-height: 26px;
+        max-width: calc(100% - 118px);
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.da-newMessagesBar {
+    button:first-child {
+        max-width: calc(100% - 104px);
+    }
+}

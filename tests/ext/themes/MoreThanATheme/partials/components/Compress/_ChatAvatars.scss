@@ -1,0 +1,12 @@
+@media(max-width:760px) {
+    .da-message {
+        .da-avatar {
+            display: none;
+        }
+
+        .da-content,
+        .da-headerCozy {
+            margin-left: 10px;
+        }
+    }
+}

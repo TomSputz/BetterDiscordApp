@@ -1,0 +1,44 @@
+guildsWrapperTimings {
+    transition-duration: 100ms;
+    transition-timing-function: linear;
+}
+
+.da-guildsWrapper {
+    transition-property: width;
+    @extend guildsWrapperTimings;
+
+    .da-unreadMentionsBar {
+        transition-property: font-size, border-radius;
+        @extend guildsWrapperTimings;
+
+        svg {
+            transition-property: margin-left;
+            ;
+            @extend guildsWrapperTimings;
+        }
+    }
+
+    .da-unreadMentionsIndicatorBottom,
+    .da-unreadMentionsIndicatorTop {
+        transition-property: padding;
+        @extend guildsWrapperTimings;
+    }
+
+    &:not(:hover) {
+        width: 10px;
+
+        .da-unreadMentionsBar {
+            font-size: 0;
+            border-radius: 0;
+
+            svg {
+                margin-left: 0;
+            }
+        }
+
+        .da-unreadMentionsIndicatorBottom,
+        .da-unreadMentionsIndicatorTop {
+            padding: 0;
+        }
+    }
+}
